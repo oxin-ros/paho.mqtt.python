@@ -85,7 +85,13 @@ else:
 try:
     BlockingIOError
 except NameError:
-    BlockingIOError  = IOError
+    BlockingIOError = IOError
+
+# Python 2.7 does not have ConnectionError. Fall back to OSError
+try:
+    ConnectionError
+except NameError:
+    ConnectionError = OSError
 
 MQTTv31 = 3
 MQTTv311 = 4
