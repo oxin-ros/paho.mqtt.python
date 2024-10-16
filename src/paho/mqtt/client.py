@@ -81,7 +81,7 @@ if platform.system() == 'Windows':
 else:
     EAGAIN = errno.EAGAIN
 
-# Python 2.7 does not have BlockingIOError.  Fall back to IOError
+# Python 2.7 does not have BlockingIOError. Fall back to IOError
 try:
     BlockingIOError
 except NameError:
@@ -92,6 +92,12 @@ try:
     ConnectionError
 except NameError:
     ConnectionError = OSError
+
+# Python 2.7 doesn't have ConnectionAbortedError. Fall back to ConnectionError.
+try:
+    ConnectionAbortedError
+except NameError:
+    ConnectionAbortedError = ConnectionError
 
 MQTTv31 = 3
 MQTTv311 = 4
