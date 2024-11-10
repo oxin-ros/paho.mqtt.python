@@ -1,3 +1,7 @@
+v1.6.3 - 2024-11-11
+
+- Fix broken connection error in Python 2.7.
+
 v1.6.2 - 2024-10-23
 
 - Fix missing ConnectionError & ConnectionAbortedError types in Python 2.7.
