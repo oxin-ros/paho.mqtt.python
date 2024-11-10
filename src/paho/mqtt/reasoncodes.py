@@ -162,9 +162,6 @@ class ReasonCodes:
 
     def unpack(self, buffer):
         c = buffer[0]
-        # Remove broken conversion to int for Python 2
-        if sys.version_info[0] < 3 and isinstance(c, str):
-            c = ord(c)
         name = self.__getName__(self.packetType, c)
         self.value = self.getId(name)
         return 1
