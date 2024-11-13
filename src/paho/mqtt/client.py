@@ -3253,6 +3253,7 @@ class Client(object):
             props, props_len = properties.unpack(packet)
             reasoncodes = []
             for c in packet[props_len:]:
+                print(c)
                 reasoncodes.append(ReasonCodes(SUBACK >> 4, identifier=c))
         else:
             pack_format = "!" + "B" * len(packet)
