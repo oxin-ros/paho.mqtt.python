@@ -3253,8 +3253,6 @@ class Client(object):
             props, props_len = properties.unpack(packet)
             reasoncodes = []
             for c in packet[props_len:]:
-                if sys.version_info[0] < 3:
-                    c = ord(c)
                 reasoncodes.append(ReasonCodes(SUBACK >> 4, identifier=c))
         else:
             pack_format = "!" + "B" * len(packet)
@@ -3447,8 +3445,6 @@ class Client(object):
             props, props_len = properties.unpack(packet)
             reasoncodes = []
             for c in packet[props_len:]:
-                if sys.version_info[0] < 3:
-                    c = ord(c)
                 reasoncodes.append(ReasonCodes(UNSUBACK >> 4, identifier=c))
             if len(reasoncodes) == 1:
                 reasoncodes = reasoncodes[0]

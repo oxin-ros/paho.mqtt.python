@@ -70,12 +70,12 @@ def readUTF(buffer, maxlen):
     buf = buffer[2:2+length].decode("utf-8")
     # look for chars which are invalid for MQTT
     for c in buf: # look for D800-DFFF in the UTF string
-        ord_c = ord(c)
-        if ord_c >= 0xD800 and ord_c <= 0xDFFF:
+        # ord_c = ord(c)
+        if c >= 0xD800 and c <= 0xDFFF:
             raise MalformedPacket("[MQTT-1.5.4-1] D800-DFFF found in UTF-8 data")
-        if ord_c == 0x00: # look for null in the UTF string
+        if c == 0x00: # look for null in the UTF string
             raise MalformedPacket("[MQTT-1.5.4-2] Null found in UTF-8 data")
-        if ord_c == 0xFEFF:
+        if c == 0xFEFF:
             raise MalformedPacket("[MQTT-1.5.4-3] U+FEFF in UTF-8 data")
     return buf, length+2
 
